@@ -11,7 +11,7 @@ public class HorseController : MonoBehaviour
     [SerializeField]
     private Rigidbody _rigidbody;
 
-    private float _minJumpDistance = 1.5f; // distance from ground allowed before player can jump again
+    private float _minJumpDistance = 1.1f; // distance from ground allowed before player can jump again
 
     /// <summary>
     /// Character move speed
