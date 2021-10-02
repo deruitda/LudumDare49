@@ -21,6 +21,9 @@ public class ThunderBolt : MonoBehaviour, IWeapon
     [SerializeField]
     private BaseProjectile _projectile;
 
+    [SerializeField]
+    private AudioSource _projectileAudio;
+
     private float _nextShotTime = 0.0f; 
 
     // Update is called once per frame
