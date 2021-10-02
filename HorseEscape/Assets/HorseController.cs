@@ -10,6 +10,8 @@ public class HorseController : MonoBehaviour
     private float _jumpForce = 2;
     [SerializeField]
     private Rigidbody _rigidbody;
+    [SerializeField]
+    private Camera _camera;
 
     private float _minJumpDistance = 1.1f; // distance from ground allowed before player can jump again
 
@@ -33,15 +35,13 @@ public class HorseController : MonoBehaviour
     {
         // Horizontal movement (a and d keys)
         transform.Translate(new Vector2(Input.GetAxis("Horizontal") * MoveSpeed * Time.deltaTime, 0));
+        _camera.transform.position = new Vector3(transform.position.x, _camera.transform.position.y, _camera.transform.position.z);
 
         if (Input.GetKey(KeyCode.Space) && IsGrounded())
         {
             _rigidbody.AddForce(new Vector2(0, _jumpForce));
         }
-
-        RaycastHit hit;
-        var a = Physics.Raycast(_rigidbody.transform.position, Vector2.down, out hit, _minJumpDistance);
     }
 
-    private bool IsGrounded() => Physics.Raycast(_rigidbody.transform.position, Vector2.down, _minJumpDistance);
+    private bool IsGrounded() => Physics.Raycast(transform.position, Vector2.down, _minJumpDistance);
 }
