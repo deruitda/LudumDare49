@@ -507,7 +507,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 5
-  _jumpForce: 75
+  _jumpForce: 250
   _rigidbody: {fileID: 1794970791}
   _camera: {fileID: 519420031}
 --- !u!54 &1794970791
@@ -526,6 +526,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &1794970792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1794970788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e98a33b97d2d85b4db6c147ad769196d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &5750722070175816795
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -537,6 +549,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: HorsePlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 3644826045906954026, guid: 0d174d304efc57f4dafeac17629d897f, type: 3}
+      propertyPath: _projectile
+      value: 
+      objectReference: {fileID: 8909780503201477775, guid: 5380a33e6a60c1943b16b3ef47b07e6d, type: 3}
+    - target: {fileID: 3644826045906954026, guid: 0d174d304efc57f4dafeac17629d897f, type: 3}
+      propertyPath: _shotDelayInSeconds
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3644826045906954026, guid: 0d174d304efc57f4dafeac17629d897f, type: 3}
+      propertyPath: _projectileGameObject
+      value: 
+      objectReference: {fileID: 7129150389623319983, guid: 5380a33e6a60c1943b16b3ef47b07e6d, type: 3}
     - target: {fileID: 5750722071802389923, guid: 0d174d304efc57f4dafeac17629d897f, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
