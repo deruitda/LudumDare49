@@ -27,7 +27,7 @@ public class ThunderBolt : MonoBehaviour, IWeapon
     private float _nextShotTime = 0.0f; 
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Attack();
     }

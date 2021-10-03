@@ -9808,6 +9808,7 @@ GameObject:
   - component: {fileID: 2132477611009464843}
   - component: {fileID: 8909780503201477775}
   - component: {fileID: 362619111704612085}
+  - component: {fileID: 3197328097274805554}
   m_Layer: 0
   m_Name: BoltProjectile
   m_TagString: Untagged
@@ -9956,3 +9957,17 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!136 &3197328097274805554
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7129150389623319983}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.49
+  m_Height: 2.4
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}

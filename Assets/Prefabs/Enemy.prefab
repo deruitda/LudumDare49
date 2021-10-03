@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2757679800969378987}
   - component: {fileID: 2757679800969378997}
   - component: {fileID: 2757679800969378986}
+  - component: {fileID: 5627043773691282354}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Untagged
@@ -74,6 +75,20 @@ MonoBehaviour:
     m_Bits: 8
   SightRange: 50
   AttackRange: 5
+--- !u!136 &5627043773691282354
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2757679800969378984}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.57
+  m_Height: 2.34
+  m_Direction: 1
+  m_Center: {x: 0, y: 1.03, z: 0}
 --- !u!1 &2757679802471834712
 GameObject:
   m_ObjectHideFlags: 0
@@ -116,7 +131,6 @@ GameObject:
   - component: {fileID: 2249723010764846588}
   - component: {fileID: 9062664759803684694}
   - component: {fileID: 7284218837979521531}
-  - component: {fileID: 6487008878233634357}
   m_Layer: 6
   m_Name: Capsule
   m_TagString: Untagged
@@ -132,7 +146,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7693993706221998036}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.057, z: 0}
+  m_LocalPosition: {x: 0, y: 0.945, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2757679802471834715}
@@ -165,7 +179,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: e185b0db62ca7af46a15f7ce32b61d30, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -187,17 +201,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &6487008878233634357
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7693993706221998036}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
