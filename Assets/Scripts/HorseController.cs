@@ -21,7 +21,7 @@ public class HorseController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         Debug.Log($"horse position {transform.position}");
         // Horizontal movement (a and d keys)
