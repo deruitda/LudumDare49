@@ -24,6 +24,18 @@ public class ThunderBolt : MonoBehaviour, IWeapon
     [SerializeField]
     private AudioSource _projectileAudio;
 
+    [SerializeField]
+    private float _clampAngle = 75f;
+
+    [SerializeField]
+    private float weaponHoldingX = 0.736f;
+
+    [SerializeField]
+    private float weaponHoldingY = 0.197f;
+
+    [SerializeField]
+    private Transform player;
+
     private float _nextShotTime = 0.0f; 
 
     // Update is called once per frame
@@ -38,21 +50,16 @@ public class ThunderBolt : MonoBehaviour, IWeapon
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = -0.639f;
         Vector3 objectPos = Camera.main.WorldToScreenPoint(transform.position);
+
         mousePos.x = mousePos.x - objectPos.x;
         mousePos.y = mousePos.y - objectPos.y;
+
         float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
+        //angle = Mathf.Clamp(Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg, -1 * _clampAngle, _clampAngle);
+
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 90));
-        //var aim = PlayerAim.GetMouseWorldPosition();
-        //var angle = Mathf.Atan2(aim.x - transform.position.x, aim.y - transform.position.y);
-        //transform.Rotate(Vector3.up, angle);
-        //float horizontalAxis = Mathf.Cos(angle);
-        //float verticalAxis = Mathf.Sin(angle);
-
-        //Vector3 endPosition = startPosition;
-        //endPosition.x += (horizontalAxis + lineMultiplier);
-        //endPosition.y += (verticalAxis + lineMultiplier);
-
     }
+    
 
     public void Attack()
     {
