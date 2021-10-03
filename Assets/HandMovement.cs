@@ -5,7 +5,7 @@ using UnityEngine;
 public class HandMovement : MonoBehaviour
 {
     [SerializeField]
-    Transform player;
+    private Transform _player;
 
     [SerializeField]
     private float _armLength = 1.5f;
@@ -24,12 +24,12 @@ public class HandMovement : MonoBehaviour
 
     private void setHandPosition()
     {
-        float angle = PlayerAim.GetMouseAngle(player);
+        float angle = PlayerAim.GetMouseAngle(_player);
 
         float xPos = Mathf.Cos(angle);
         float yPos = Mathf.Sin(angle);
 
-        transform.position = new Vector3(xPos * _armLength, yPos * _armLength, 0) + player.position;
+        transform.position = new Vector3(xPos * _armLength, yPos * _armLength, 0) + _player.position;
         float rotateAngle = (angle * Mathf.Rad2Deg) + 270;
         transform.rotation = Quaternion.Euler(new Vector3(0, 0, rotateAngle));
     }
