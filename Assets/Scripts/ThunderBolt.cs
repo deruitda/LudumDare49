@@ -41,7 +41,7 @@ public class ThunderBolt : MonoBehaviour, IWeapon
         mousePos.x = mousePos.x - objectPos.x;
         mousePos.y = mousePos.y - objectPos.y;
         float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 90));
         //var aim = PlayerAim.GetMouseWorldPosition();
         //var angle = Mathf.Atan2(aim.x - transform.position.x, aim.y - transform.position.y);
         //transform.Rotate(Vector3.up, angle);
