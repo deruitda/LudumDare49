@@ -61,7 +61,7 @@ Transform:
   m_GameObject: {fileID: 2665356646340979698}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 6555965707909234429}
   - {fileID: 1243669990516722840}
@@ -101,6 +101,7 @@ MonoBehaviour:
   _jumpForce: 250
   _rigidbody: {fileID: 1794970791}
   _camera: {fileID: 0}
+  _sun: {fileID: 0}
 --- !u!114 &1794970792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,6 +130,7 @@ MonoBehaviour:
   _healthBar: {fileID: 2978294733775180385}
   StartingHealth: 100
   Weapon: {fileID: 0}
+  IsInvincible: 0
 --- !u!136 &7719970184128308508
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -168,7 +170,6 @@ GameObject:
   - component: {fileID: 8481583730316255646}
   - component: {fileID: 5430559025334997223}
   - component: {fileID: 1485603037431306315}
-  - component: {fileID: 5291586593962617178}
   m_Layer: 3
   m_Name: Shoulder
   m_TagString: Untagged
@@ -240,19 +241,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &5291586593962617178
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3249491042419831284}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!82 &1436879562788320668
 AudioSource:
   m_ObjectHideFlags: 0
@@ -366,7 +354,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 84133244601060836, guid: 447614fbc1451f44d9561f3ea5ab0ba9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.565
       objectReference: {fileID: 0}
     - target: {fileID: 84133244601060836, guid: 447614fbc1451f44d9561f3ea5ab0ba9, type: 3}
       propertyPath: m_LocalPosition.z
@@ -501,7 +489,9 @@ PrefabInstance:
       propertyPath: _projectileAudio
       value: 
       objectReference: {fileID: 1436879562788320668}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 1632537465045342222, guid: c68f0ba6e62bf674ebf449e0a362e80f, type: 3}
+    - {fileID: 4085575316293842666, guid: c68f0ba6e62bf674ebf449e0a362e80f, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: c68f0ba6e62bf674ebf449e0a362e80f, type: 3}
 --- !u!1 &2874582712209977752 stripped
 GameObject:
