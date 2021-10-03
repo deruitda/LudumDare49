@@ -6,6 +6,7 @@ TagManager:
   tags:
   - IgnoreParticleCollision
   - Enemy
+  - GameManager
   layers:
   - Default
   - TransparentFX
