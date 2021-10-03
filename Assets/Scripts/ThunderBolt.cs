@@ -13,10 +13,7 @@ public class ThunderBolt : MonoBehaviour
     private float _shotDelayInSeconds = 3;
 
     [SerializeField]
-    private float _projectileSpawnOffsetX = 2;
-
-    [SerializeField] 
-    float _projectileSpawnOffsetY = 0;
+    private float _projectileSpawnOffset = 1.5f;
 
     [SerializeField]
     private BaseProjectile _projectile;
@@ -24,14 +21,27 @@ public class ThunderBolt : MonoBehaviour
     [SerializeField]
     private AudioSource _projectileAudio;
 
+    [SerializeField]
+    private Transform _player;
+
     private float _nextShotTime = 0.0f; 
 
     // Update is called once per frame
     void FixedUpdate()
     {
+        AimGun();
         Attack();
     }
 
+    private float getMouseAngle()
+    {
+        return (PlayerAim.GetMouseAngle(transform) * Mathf.Rad2Deg) + 90;
+    }
+    public void AimGun()
+    {
+        float angle = getMouseAngle();
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+    }
     public void Attack()
     {
         // fire projectile
@@ -55,5 +65,19 @@ public class ThunderBolt : MonoBehaviour
         projectileGameObject.GetComponent<Rigidbody>().AddForce((-transform.up) * _projectile.GetSpeed());
     }
 
-    private Vector2 GetProjectilePosition() => new Vector2(transform.position.x + _projectileSpawnOffsetX, transform.position.y + _projectileSpawnOffsetY);
+    private float getProjectileSpawnOffset()
+    {
+        return Mathf.Max(0.3f, _projectileSpawnOffset);
+    }
+
+    private Vector2 GetProjectilePosition()
+    {
+        float angle = PlayerAim.GetMouseAngle(_player);
+
+        float projectileSpawnOffset = getProjectileSpawnOffset();
+        float xPos = Mathf.Cos(angle) * (transform.localScale.y + projectileSpawnOffset);
+        float yPos = Mathf.Sin(angle) * (transform.localScale.y + projectileSpawnOffset);
+
+        return new Vector2(transform.position.x + xPos, transform.position.y + yPos);
+    }
 }

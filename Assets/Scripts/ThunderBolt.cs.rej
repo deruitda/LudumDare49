@@ -1,0 +1,24 @@
+diff a/Assets/Scripts/ThunderBolt.cs b/Assets/Scripts/ThunderBolt.cs	(rejected hunks)
+@@ -67,5 +67,21 @@
+         projectileGameObject.GetComponent<Rigidbody>().AddForce((-transform.up) * _projectile.GetSpeed());
+     }
+ 
+-    private Vector2 GetProjectilePosition() => new Vector2(transform.position.x + _projectileSpawnOffsetX, transform.position.y + _projectileSpawnOffsetY);
++    private float getProjectileSpawnOffset()
++    {
++        return Mathf.Max(0.3f, _projectileSpawnOffset);
++    }
++
++    private Vector2 GetProjectilePosition()
++    {
++        float angle = PlayerAim.GetMouseAngle(_player);
++
++
++        float projectileSpawnOffset = getProjectileSpawnOffset();
++        float xPos = Mathf.Cos(angle) * (transform.localScale.y + projectileSpawnOffset);
++        float yPos = Mathf.Sin(angle) * (transform.localScale.y + projectileSpawnOffset);
++
++        Vector2 v = new Vector2(transform.position.x + xPos, transform.position.y + +yPos);
++        return v;
++    }
+ }
