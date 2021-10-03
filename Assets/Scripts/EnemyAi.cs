@@ -49,10 +49,10 @@ public class EnemyAi : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, AttackRange);
-        Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(transform.position, SightRange);
+        //Gizmos.color = Color.red;
+        //Gizmos.DrawWireSphere(transform.position, AttackRange);
+        //Gizmos.color = Color.blue;
+        //Gizmos.DrawWireSphere(transform.position, SightRange);
     }
 
     private void Awake()
