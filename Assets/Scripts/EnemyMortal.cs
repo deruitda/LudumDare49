@@ -19,6 +19,9 @@ public class EnemyMortal : BaseMortal
     [SerializeField]
     private EnemyAi _enemyAi;
 
+    public EnemySpawner Spawner;
+
+
     public override void TakeDamage(float damage)
     {
         _painAudio.Play();
@@ -33,6 +36,7 @@ public class EnemyMortal : BaseMortal
         _enemyAi.Stop();
         Destroy(_rigidbody);
         Destroy(_collider);
+        Spawner.RecordDeadEnemy();
         Invoke("DieDelayed", 1f);
     }
 
