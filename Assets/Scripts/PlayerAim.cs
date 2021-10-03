@@ -32,6 +32,6 @@ public class PlayerAim : MonoBehaviour
         mousePos.x = mousePos.x - objectPos.x;
         mousePos.y = mousePos.y - objectPos.y;
 
-        return (Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg) + 90;
+        return (Mathf.Atan2(mousePos.y, mousePos.x));
     }
 }

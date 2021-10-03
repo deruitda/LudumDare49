@@ -13,10 +13,7 @@ public class ThunderBolt : MonoBehaviour, IWeapon
     private float _shotDelayInSeconds = 3;
 
     [SerializeField]
-    private float _projectileSpawnOffsetX = 2;
-
-    [SerializeField] 
-    float _projectileSpawnOffsetY = 0;
+    private float _projectileSpawnOffset = 2;
 
     [SerializeField]
     private BaseProjectile _projectile;
@@ -25,16 +22,7 @@ public class ThunderBolt : MonoBehaviour, IWeapon
     private AudioSource _projectileAudio;
 
     [SerializeField]
-    private float _clampAngle = 75f;
-
-    [SerializeField]
-    private float weaponHoldingX = 0.736f;
-
-    [SerializeField]
-    private float weaponHoldingY = 0.197f;
-
-    [SerializeField]
-    private Transform player;
+    private Transform _player;
 
     private float _nextShotTime = 0.0f; 
 
@@ -46,14 +34,7 @@ public class ThunderBolt : MonoBehaviour, IWeapon
     }
     private float getMouseAngle()
     {
-        Vector3 mousePos = Input.mousePosition;
-        mousePos.z = -0.639f;
-        Vector3 objectPos = Camera.main.WorldToScreenPoint(transform.position);
-
-        mousePos.x = mousePos.x - objectPos.x;
-        mousePos.y = mousePos.y - objectPos.y;
-
-        return (Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg) + 90;
+        return (PlayerAim.GetMouseAngle(_player) * Mathf.Rad2Deg) + 90;
     }
     public void AimGun()
     {
@@ -86,5 +67,21 @@ public class ThunderBolt : MonoBehaviour, IWeapon
         projectileGameObject.GetComponent<Rigidbody>().AddForce((-transform.up) * _projectile.GetSpeed());
     }
 
-    private Vector2 GetProjectilePosition() => new Vector2(transform.position.x + _projectileSpawnOffsetX, transform.position.y + _projectileSpawnOffsetY);
+    private float getProjectileSpawnOffset()
+    {
+        return Mathf.Max(0.3f, _projectileSpawnOffset);
+    }
+
+    private Vector2 GetProjectilePosition()
+    {
+        float angle = PlayerAim.GetMouseAngle(_player);
+
+
+        float projectileSpawnOffset = getProjectileSpawnOffset();
+        float xPos = Mathf.Cos(angle) * (transform.localScale.y + projectileSpawnOffset);
+        float yPos = Mathf.Sin(angle) * (transform.localScale.y + projectileSpawnOffset);
+
+        Vector2 v = new Vector2(transform.position.x + xPos, transform.position.y + +yPos);
+        return v;
+    }
 }

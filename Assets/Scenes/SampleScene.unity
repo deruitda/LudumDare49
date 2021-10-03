@@ -602,6 +602,18 @@ PrefabInstance:
       propertyPath: m_RotationOffset.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7839093340264053342, guid: 0d174d304efc57f4dafeac17629d897f, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 1794970790}
+    - target: {fileID: 7839093340264053342, guid: 0d174d304efc57f4dafeac17629d897f, type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 1794970790}
+    - target: {fileID: 7839093340264053342, guid: 0d174d304efc57f4dafeac17629d897f, type: 3}
+      propertyPath: _projectileSpawnOffset
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 8297406827617883396, guid: 0d174d304efc57f4dafeac17629d897f, type: 3}
       propertyPath: m_RootOrder
       value: 3
