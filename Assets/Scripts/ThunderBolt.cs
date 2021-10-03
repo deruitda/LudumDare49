@@ -13,7 +13,7 @@ public class ThunderBolt : MonoBehaviour
     private float _shotDelayInSeconds = 3;
 
     [SerializeField]
-    private float _projectileSpawnOffset = 1.5f;
+    private float _projectileSpawnOffset = 2;
 
     [SerializeField]
     private BaseProjectile _projectile;
@@ -24,24 +24,22 @@ public class ThunderBolt : MonoBehaviour
     [SerializeField]
     private Transform _player;
 
-    private float _nextShotTime = 0.0f; 
+    [SerializeField]
+    private Transform _hand;
+
+    private float _nextShotTime = 0.0f;
 
     // Update is called once per frame
     void FixedUpdate()
     {
-        AimGun();
         Attack();
     }
-
     private float getMouseAngle()
     {
-        return (PlayerAim.GetMouseAngle(transform) * Mathf.Rad2Deg) + 90;
+        return (PlayerAim.GetMouseAngle(_player) * Mathf.Rad2Deg) + 90;
     }
-    public void AimGun()
-    {
-        float angle = getMouseAngle();
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
-    }
+
+
     public void Attack()
     {
         // fire projectile
@@ -54,15 +52,15 @@ public class ThunderBolt : MonoBehaviour
 
     private void FireProjectile()
     {
-        var aim = PlayerAim.GetRelativeAim(transform);
+        float angle = getMouseAngle();
         _projectileAudio.Play();
 
         var projectileGameObject = Instantiate(
             _projectileGameObject,
             GetProjectilePosition(),
-            Quaternion.Euler(new Vector3(0, 0, 90))) as GameObject;
+            Quaternion.Euler(new Vector3(0, 0, angle))) as GameObject;
 
-        projectileGameObject.GetComponent<Rigidbody>().AddForce((-transform.up) * _projectile.GetSpeed());
+        projectileGameObject.GetComponent<Rigidbody>().AddForce((transform.up) * _projectile.GetSpeed());
     }
 
     private float getProjectileSpawnOffset()
@@ -74,10 +72,12 @@ public class ThunderBolt : MonoBehaviour
     {
         float angle = PlayerAim.GetMouseAngle(_player);
 
+
         float projectileSpawnOffset = getProjectileSpawnOffset();
         float xPos = Mathf.Cos(angle) * (transform.localScale.y + projectileSpawnOffset);
         float yPos = Mathf.Sin(angle) * (transform.localScale.y + projectileSpawnOffset);
 
-        return new Vector2(transform.position.x + xPos, transform.position.y + yPos);
+        Vector2 v = new Vector2(transform.position.x + xPos, transform.position.y + +yPos);
+        return v;
     }
 }

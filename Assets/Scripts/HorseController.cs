@@ -23,6 +23,7 @@ public class HorseController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Debug.Log($"horse position {transform.position}");
         // Horizontal movement (a and d keys)
         transform.Translate(new Vector2(Input.GetAxis("Horizontal") * _moveSpeed * Time.deltaTime, 0));
         _camera.transform.position = new Vector3(transform.position.x, _camera.transform.position.y, _camera.transform.position.z);

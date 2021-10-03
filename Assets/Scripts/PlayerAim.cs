@@ -26,7 +26,7 @@ public class PlayerAim : MonoBehaviour
     {
 
         Vector3 mousePos = Input.mousePosition;
-        mousePos.z = -0.639f;
+        mousePos.z = 0f;
         Vector3 objectPos = Camera.main.WorldToScreenPoint(localTransform.position);
 
         mousePos.x = mousePos.x - objectPos.x;
