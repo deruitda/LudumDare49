@@ -24,8 +24,6 @@ public class HandMovement : MonoBehaviour
 
     private void setHandPosition()
     {
-        Debug.Log($"Player pos: {_player.localPosition}");
-        Debug.Log($"Hand pos: {transform.position}");
         float angle = PlayerAim.GetMouseAngle(_player);
 
         float xPos = Mathf.Cos(angle);
