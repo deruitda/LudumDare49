@@ -9611,7 +9611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1794970793, guid: 0d174d304efc57f4dafeac17629d897f, type: 3}
       propertyPath: IsInvincible
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 369532738448786766, guid: 0d174d304efc57f4dafeac17629d897f, type: 3}
       propertyPath: m_PlayOnAwake
