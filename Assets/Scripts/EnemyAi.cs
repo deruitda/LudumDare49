@@ -5,20 +5,29 @@ using UnityEngine.AI;
 
 public class EnemyAi : MonoBehaviour
 {
+    private bool _playerInSightRange, _playerInAttackRange;
+    private PlayerMortal _playerMortal;
+    private GameObject _playerGameObject;
+    private Transform _playerTransform;
+    private float _nextAttackTime = 0;
+    [SerializeField]
+    private EnemyMortal _enemyMortal;
+    [SerializeField]
+    private float _attackDelayInSeconds = 2f;
+
+
     public NavMeshAgent Agent;
-    public Transform Player;
     public LayerMask WhatIsPlayer;
     public float SightRange, AttackRange;
-    bool PlayerInSightRange, PlayerInAttackRange;
 
     public void Update()
     {
-        PlayerInSightRange = Physics.CheckSphere(transform.position, SightRange, WhatIsPlayer);
-        PlayerInAttackRange = Physics.CheckSphere(transform.position, AttackRange, WhatIsPlayer);
+        _playerInSightRange = Physics.CheckSphere(transform.position, SightRange, WhatIsPlayer);
+        _playerInAttackRange = Physics.CheckSphere(transform.position, AttackRange, WhatIsPlayer);
 
-        if (PlayerInSightRange)
+        if (_playerInSightRange)
         {
-            if (PlayerInAttackRange)
+            if (_playerInAttackRange && Time.time > _nextAttackTime)
             {
                 AttackPlayer();
             }
@@ -39,16 +48,21 @@ public class EnemyAi : MonoBehaviour
 
     private void Awake()
     {
-        Player = GameObject.Find("HorsePlayer").transform;
+        _playerGameObject = GameObject.FindGameObjectWithTag("Player");
+        _playerTransform = GameObject.Find("HorsePlayer").transform;
+        _playerMortal = GameObject.FindGameObjectWithTag("Player")
+            .GetComponent<PlayerMortal>();
     }
     private void ChasePlayer()
     {
-        Agent.SetDestination(Player.position);
+        Agent.SetDestination(_playerTransform.position);
     }
 
     private void AttackPlayer()
     {
-        transform.LookAt(Player);
+        transform.LookAt(_playerTransform);
+        _playerMortal.TakeDamage(_enemyMortal.Weapon.GetWeaponDamage());
+        _nextAttackTime = Time.time + _attackDelayInSeconds;
     }
 }
 
