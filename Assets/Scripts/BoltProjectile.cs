@@ -21,7 +21,5 @@ public class BoltProjectile : BaseProjectile
             enemyMortal.TakeDamage(50);
             Despawn();
         }
-
-        Debug.Log("Triggered");
     }
 }

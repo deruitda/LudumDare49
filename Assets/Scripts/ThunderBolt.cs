@@ -45,7 +45,7 @@ public class ThunderBolt : MonoBehaviour
     private void FireProjectile()
     {
         var aim = PlayerAim.GetRelativeAim(transform);
-        Debug.DrawLine(transform.position, aim, Color.red);
+        _projectileAudio.Play();
 
         var projectileGameObject = Instantiate(
             _projectileGameObject,

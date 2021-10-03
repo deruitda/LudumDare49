@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -22,20 +23,28 @@ public class EnemyAi : MonoBehaviour
 
     public void Update()
     {
-        _playerInSightRange = Physics.CheckSphere(transform.position, SightRange, WhatIsPlayer);
-        _playerInAttackRange = Physics.CheckSphere(transform.position, AttackRange, WhatIsPlayer);
-
-        if (_playerInSightRange)
+        if (!_enemyMortal.IsDead)
         {
-            if (_playerInAttackRange && Time.time > _nextAttackTime)
+            _playerInSightRange = Physics.CheckSphere(transform.position, SightRange, WhatIsPlayer);
+            _playerInAttackRange = Physics.CheckSphere(transform.position, AttackRange, WhatIsPlayer);
+
+            if (_playerInSightRange)
             {
-                AttackPlayer();
-            }
-            else
-            {
-                ChasePlayer();
-            }
+                if (_playerInAttackRange && Time.time > _nextAttackTime)
+                {
+                    AttackPlayer();
+                }
+                else
+                {
+                    ChasePlayer();
+                }
+            } 
         }
+    }
+
+    public void Stop()
+    {
+        Agent.SetDestination(transform.position);
     }
 
     private void OnDrawGizmos()

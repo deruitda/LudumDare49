@@ -76,6 +76,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _enemyMortal: {fileID: 740391826}
+  _attackDelayInSeconds: 2
   Agent: {fileID: 2757679800969378997}
   WhatIsPlayer:
     serializedVersion: 2
@@ -138,11 +139,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbe0c0d8166fb1d45a26120456cddb4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameManager: {fileID: 0}
   _healthBar: {fileID: 6391356805737829736}
   StartingHealth: 100
   Weapon: {fileID: 5343931776197783909}
   _painAudio: {fileID: 6792723298967456495}
   _deathAudio: {fileID: 2696014920853211449}
+  _rigidbody: {fileID: 740391825}
+  _collider: {fileID: 5627043773691282354}
+  _enemyAi: {fileID: 2757679800969378986}
 --- !u!82 &6792723298967456495
 AudioSource:
   m_ObjectHideFlags: 0
@@ -155,7 +160,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: c3bb621f62c54c541bcd961fdd0ca0d2, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 1
+  m_Volume: 0.338
   m_Pitch: 1
   Loop: 0
   Mute: 0

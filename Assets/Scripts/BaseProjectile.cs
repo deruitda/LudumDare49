@@ -11,6 +11,7 @@ namespace Assets.Scripts.Interfaces
     {
         private float _despawnTime;
         private MeshRenderer _meshRenderer;
+
         private ParticleSystem _particleSystem;
         public abstract float GetLifetimeInSeconds();
         public abstract float GetSpeed();
@@ -33,14 +34,6 @@ namespace Assets.Scripts.Interfaces
         public virtual void Despawn()
         {
             Debug.Log("Destroying bullet");
-            _meshRenderer.enabled = false;
-            _particleSystem.Stop();
-            // need to execute with a delay here so that the sound continues to play
-            Invoke("DestroySelf", 1);
-        }
-
-        private void DestroySelf()
-        {
             Destroy(this.gameObject);
         }
     }

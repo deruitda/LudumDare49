@@ -9,6 +9,16 @@ public class EnemyMortal : BaseMortal
 
     [SerializeField]
     private AudioSource _deathAudio;
+
+    [SerializeField]
+    private Rigidbody _rigidbody;
+
+    [SerializeField]
+    private Collider _collider;
+
+    [SerializeField]
+    private EnemyAi _enemyAi;
+
     public override void TakeDamage(float damage)
     {
         _painAudio.Play();
@@ -17,8 +27,12 @@ public class EnemyMortal : BaseMortal
 
     public override void Die()
     {
+        IsDead = true;
         _painAudio.Stop();
         _deathAudio.Play();
+        _enemyAi.Stop();
+        Destroy(_rigidbody);
+        Destroy(_collider);
         Invoke("DieDelayed", 1f);
     }
 

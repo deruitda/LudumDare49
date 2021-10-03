@@ -15,6 +15,8 @@ public abstract class BaseMortal : MonoBehaviour
 
     public BaseWeapon Weapon;
 
+    public bool IsDead { get; protected set; }
+
     public void Awake()
     {
         Health = StartingHealth;
@@ -34,6 +36,7 @@ public abstract class BaseMortal : MonoBehaviour
 
     public virtual void Die()
     {
+        IsDead = true;
         Destroy(this.gameObject);
     }
 }
