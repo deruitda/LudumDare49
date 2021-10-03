@@ -4,15 +4,9 @@ using UnityEngine;
 
 public class PlayerMortal : BaseMortal
 {
-    // Start is called before the first frame update
-    void Start()
+    public override void Die()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _gameManager.GameOver();
+        base.Die();
     }
 }

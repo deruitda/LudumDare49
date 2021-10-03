@@ -58,9 +58,10 @@ GameObject:
   - component: {fileID: 1794970789}
   - component: {fileID: 1794970792}
   - component: {fileID: 1794970793}
+  - component: {fileID: 7719970184128308508}
   m_Layer: 3
   m_Name: HorsePlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -138,8 +139,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06c5c33ace616444a8e6313c7cfc3126, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _gameManager: {fileID: 0}
   _healthBar: {fileID: 2978294733775180385}
   StartingHealth: 100
+  Weapon: {fileID: 0}
+--- !u!136 &7719970184128308508
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2665356646340979698}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.5
+  m_Height: 2.14
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5750722071802389935
 GameObject:
   m_ObjectHideFlags: 0
@@ -151,7 +168,6 @@ GameObject:
   - component: {fileID: 5750722071802389923}
   - component: {fileID: 5750722071802389932}
   - component: {fileID: 5750722071802389933}
-  - component: {fileID: 5750722071802389934}
   m_Layer: 3
   m_Name: Capsule
   m_TagString: Untagged
@@ -222,20 +238,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!136 &5750722071802389934
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5750722071802389935}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &1182337809112842620
 PrefabInstance:
   m_ObjectHideFlags: 0

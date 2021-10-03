@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IWeapon
-{
-    public void Attack();
+public abstract class BaseWeapon : MonoBehaviour
+{ 
+    public abstract float GetWeaponDamage();
 }
