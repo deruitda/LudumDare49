@@ -21,4 +21,17 @@ public class PlayerAim : MonoBehaviour
         Vector3 worldPosition = worldCamera.ScreenToWorldPoint(screenPosition);
         return worldPosition;
     }
+
+    public static float GetMouseAngle(Transform localTransform)
+    {
+
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = -0.639f;
+        Vector3 objectPos = Camera.main.WorldToScreenPoint(localTransform.position);
+
+        mousePos.x = mousePos.x - objectPos.x;
+        mousePos.y = mousePos.y - objectPos.y;
+
+        return (Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg) + 90;
+    }
 }

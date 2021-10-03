@@ -171,3 +171,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f8fc39d073a86a64f8b44d5dfe5e87ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _projectileGameObject: {fileID: 0}
+  _shotDelayInSeconds: 0.2
+  _projectileSpawnOffsetX: 2
+  _projectileSpawnOffsetY: 0
+  _projectile: {fileID: 0}
+  _projectileAudio: {fileID: 0}
+  _clampAngle: 45
+  weaponHoldingX: 0.736
+  weaponHoldingY: 0.197
+  player: {fileID: 0}

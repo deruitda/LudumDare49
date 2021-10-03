@@ -41,24 +41,17 @@ public class ThunderBolt : MonoBehaviour, IWeapon
     // Update is called once per frame
     void FixedUpdate()
     {
-        AimGun();
+        //AimGun();
         Attack();
     }
     private float getMouseAngle()
     {
-        Vector3 mousePos = Input.mousePosition;
-        mousePos.z = -0.639f;
-        Vector3 objectPos = Camera.main.WorldToScreenPoint(transform.position);
-
-        mousePos.x = mousePos.x - objectPos.x;
-        mousePos.y = mousePos.y - objectPos.y;
-
-        return (Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg) + 90;
+        return PlayerAim.GetMouseAngle(transform);
     }
     public void AimGun()
     {
         float angle = getMouseAngle();
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
+        transform.localRotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
     
 
