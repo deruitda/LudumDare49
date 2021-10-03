@@ -35,11 +35,17 @@ public class ThunderBolt : MonoBehaviour
 
     private float _nextShotTime = 0.0f;
     float tempTime;
+
     // Update is called once per frame
     void FixedUpdate()
     {
         Attack();
         AttemptCooldown();
+    }
+
+    public float GetOverheatMetric()
+    {
+        return _overheatMetric;
     }
 
     private void AttemptCooldown()
