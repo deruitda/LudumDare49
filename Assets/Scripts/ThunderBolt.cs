@@ -44,8 +44,7 @@ public class ThunderBolt : MonoBehaviour, IWeapon
         AimGun();
         Attack();
     }
-
-    public void AimGun()
+    private float getMouseAngle()
     {
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = -0.639f;
@@ -54,10 +53,12 @@ public class ThunderBolt : MonoBehaviour, IWeapon
         mousePos.x = mousePos.x - objectPos.x;
         mousePos.y = mousePos.y - objectPos.y;
 
-        float angle = Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg;
-        //angle = Mathf.Clamp(Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg, -1 * _clampAngle, _clampAngle);
-
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle + 90));
+        return (Mathf.Atan2(mousePos.y, mousePos.x) * Mathf.Rad2Deg) + 90;
+    }
+    public void AimGun()
+    {
+        float angle = getMouseAngle();
+        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
     }
     
 
@@ -75,11 +76,12 @@ public class ThunderBolt : MonoBehaviour, IWeapon
     {
         var aim = PlayerAim.GetRelativeAim(transform);
         Debug.DrawLine(transform.position, aim, Color.red);
+        float angle = getMouseAngle();
 
         var projectileGameObject = Instantiate(
             _projectileGameObject,
             GetProjectilePosition(),
-            Quaternion.Euler(new Vector3(0, 0, 90))) as GameObject;
+            Quaternion.Euler(new Vector3(0, 0, angle))) as GameObject;
 
         projectileGameObject.GetComponent<Rigidbody>().AddForce((-transform.up) * _projectile.GetSpeed());
     }
