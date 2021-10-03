@@ -18,7 +18,7 @@ public abstract class BaseMortal : MonoBehaviour
         _healthBar.SetHealthBarLevel(Health);
     }
 
-    public void TakeDamage(float damage)
+    public virtual void TakeDamage(float damage)
     {
         Health -= damage;
         _healthBar.SetHealthBarLevel(Health);
@@ -28,7 +28,7 @@ public abstract class BaseMortal : MonoBehaviour
         }
     }
 
-    private void Die()
+    public virtual void Die()
     {
         Destroy(this.gameObject);
     }
