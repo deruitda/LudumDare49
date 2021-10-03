@@ -10,8 +10,13 @@ public class BoltProjectile : BaseProjectile
 
     [SerializeField]
     private float _speed = 1f;
+
+    [SerializeField]
+    private float _degredationPerShot = 0.05f;
     public override float GetLifetimeInSeconds() => _despawnTimeSeconds;
     public override float GetSpeed() => _speed;
+
+    public override float GetDegredationPerShot() => _degredationPerShot;
 
     private void OnTriggerEnter(Collider other)
     {

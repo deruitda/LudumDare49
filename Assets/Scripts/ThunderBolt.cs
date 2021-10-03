@@ -25,14 +25,46 @@ public class ThunderBolt : MonoBehaviour
     private Transform _player;
 
     [SerializeField]
-    private Transform _hand;
+    private float _cooldownPerSecond = .05f;
+
+    [SerializeField]
+    private float _howOftenToCooldown = 0.01f;
+
+    private float _overheatMetric = 0f;
+    private bool _isOverheated = false;
 
     private float _nextShotTime = 0.0f;
-
+    float tempTime;
     // Update is called once per frame
     void FixedUpdate()
     {
         Attack();
+        AttemptCooldown();
+    }
+
+    private void AttemptCooldown()
+    {
+        tempTime += Time.deltaTime;
+        if (tempTime > _howOftenToCooldown)
+        {
+            tempTime = 0;
+            Cooldown();
+        }
+    }
+
+    private void Cooldown()
+    {
+        if(_overheatMetric > 0)
+        {
+            float amountToCooldown = _cooldownPerSecond / (1 / _howOftenToCooldown);
+            _overheatMetric -= Mathf.Min(amountToCooldown, _overheatMetric);
+
+        }
+        if(_isOverheated && _overheatMetric == 0f)
+        {
+            _isOverheated = false;
+        }
+        
     }
     private float getMouseAngle()
     {
@@ -45,15 +77,17 @@ public class ThunderBolt : MonoBehaviour
         // fire projectile
         if (Input.GetButton("Fire1") && Time.time > _nextShotTime)
         {
-            FireProjectile();
-            _nextShotTime = Time.time + _shotDelayInSeconds;
+            if (!_isOverheated) {
+                FireProjectile();
+                _nextShotTime = Time.time + _shotDelayInSeconds;
+            }
         }
     }
 
-    private void FireProjectile()
+    private void CreateProjectile()
     {
+
         float angle = getMouseAngle();
-        _projectileAudio.Play();
 
         var projectileGameObject = Instantiate(
             _projectileGameObject,
@@ -61,6 +95,22 @@ public class ThunderBolt : MonoBehaviour
             Quaternion.Euler(new Vector3(0, 0, angle))) as GameObject;
 
         projectileGameObject.GetComponent<Rigidbody>().AddForce((transform.up) * _projectile.GetSpeed());
+    }
+    private void FireProjectile()
+    {
+        CreateProjectile();
+        _projectileAudio.Play();
+        ApplyProjectileHeat();
+    }
+
+    private void ApplyProjectileHeat()
+    {
+        _overheatMetric += Mathf.Min(_projectile.GetDegredationPerShot(), 1f - _overheatMetric);
+        if(_overheatMetric >= 1f)
+        {
+            _isOverheated = true;
+        }
+
     }
 
     private float getProjectileSpawnOffset()

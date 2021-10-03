@@ -82,7 +82,8 @@ MonoBehaviour:
   _projectile: {fileID: 8909780503201477775, guid: 5380a33e6a60c1943b16b3ef47b07e6d, type: 3}
   _projectileAudio: {fileID: 3068849373543095061}
   _player: {fileID: 0}
-  _hand: {fileID: 0}
+  _cooldownPerSecond: 0.2
+  _howOftenToCooldown: 0.01
 --- !u!82 &3068849373543095061
 AudioSource:
   m_ObjectHideFlags: 0

@@ -15,6 +15,7 @@ namespace Assets.Scripts.Interfaces
         private ParticleSystem _particleSystem;
         public abstract float GetLifetimeInSeconds();
         public abstract float GetSpeed();
+        public abstract float GetDegredationPerShot();
 
         public void Awake()
         {
