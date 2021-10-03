@@ -10,6 +10,6 @@ public class HealthBar : MonoBehaviour
 
     public void SetHealthBarLevel(float health)
     {
-        Slider.value = health;
+        Slider.value = health / 100;
     }
 }
