@@ -14651,6 +14651,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _despawnTimeSeconds: 2
   _speed: 150
+  _degredationPerShot: 0.5
+  _damage: 50
 --- !u!54 &5443059441273392560
 Rigidbody:
   m_ObjectHideFlags: 0

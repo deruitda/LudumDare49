@@ -16,7 +16,7 @@ namespace Assets.Scripts.Interfaces
         public abstract float GetLifetimeInSeconds();
         public abstract float GetSpeed();
         public abstract float GetDegredationPerShot();
-
+        public abstract float GetDamageAmount();
         public void Awake()
         {
             _despawnTime = Time.time + GetLifetimeInSeconds();
@@ -36,6 +36,16 @@ namespace Assets.Scripts.Interfaces
         {
             Debug.Log("Destroying bullet");
             Destroy(this.gameObject);
+        }
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.tag.Equals("Enemy"))
+            {
+                var enemyMortal = other.gameObject.GetComponent<EnemyMortal>();
+                float damageAmount = GetDamageAmount();
+                enemyMortal.TakeDamage(damageAmount);
+                Despawn();
+            }
         }
     }
 }

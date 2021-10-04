@@ -10,6 +10,9 @@ public class ThunderBolt : MonoBehaviour
     private GameObject _projectileGameObject;
 
     [SerializeField]
+    private GameObject _bombProjectileGameObject;
+
+    [SerializeField]
     private float _shotDelayInSeconds = 3;
 
     [SerializeField]
@@ -30,8 +33,16 @@ public class ThunderBolt : MonoBehaviour
     [SerializeField]
     private float _howOftenToCooldown = 0.01f;
 
+    [SerializeField]
+    private GameObject _grenadeGameObject;
+
+    [SerializeField]
+    private float _grenadeStartingYPosition = 5f;
+
+    [SerializeField]
+    private float _speedOfGrenadeToss = .1f;
+
     private float _overheatMetric = 0f;
-    private bool _isOverheated = false;
 
     private float _nextShotTime = 0.0f;
     float tempTime;
@@ -45,7 +56,7 @@ public class ThunderBolt : MonoBehaviour
 
     public float GetOverheatMetric()
     {
-        return _overheatMetric;
+        return Mathf.Min(_overheatMetric, 1f);
     }
 
     private void AttemptCooldown()
@@ -60,17 +71,12 @@ public class ThunderBolt : MonoBehaviour
 
     private void Cooldown()
     {
-        if(_overheatMetric > 0)
+        if (_overheatMetric > 0)
         {
             float amountToCooldown = _cooldownPerSecond / (1 / _howOftenToCooldown);
             _overheatMetric -= Mathf.Min(amountToCooldown, _overheatMetric);
 
         }
-        if(_isOverheated && _overheatMetric == 0f)
-        {
-            _isOverheated = false;
-        }
-        
     }
     private float getMouseAngle()
     {
@@ -83,11 +89,30 @@ public class ThunderBolt : MonoBehaviour
         // fire projectile
         if (Input.GetButton("Fire1") && Time.time > _nextShotTime)
         {
-            if (!_isOverheated) {
-                FireProjectile();
-                _nextShotTime = Time.time + _shotDelayInSeconds;
-            }
+            FireProjectile();
+            _nextShotTime = Time.time + _shotDelayInSeconds;
         }
+
+        if(Input.GetKey(KeyCode.LeftShift) && _overheatMetric >= 1f)
+        {
+            //SetOffBomb
+            ThrowBomb();
+
+            //undo overheat metric
+            _overheatMetric = 0f;
+        }
+    }
+
+    public void ThrowBomb()
+    {
+        var position = transform.position;
+        position.y += _grenadeStartingYPosition;
+        var projectileGameObject = Instantiate(
+            _grenadeGameObject,
+            position,
+            Quaternion.Euler(new Vector3(0, 0, 0))) as GameObject;
+
+        projectileGameObject.GetComponent<Rigidbody>().AddForce(new Vector2(0, 1) * _speedOfGrenadeToss);
     }
 
     private void CreateProjectile()
@@ -111,12 +136,7 @@ public class ThunderBolt : MonoBehaviour
 
     private void ApplyProjectileHeat()
     {
-        _overheatMetric += Mathf.Min(_projectile.GetDegredationPerShot(), 1f - _overheatMetric);
-        if(_overheatMetric >= 1f)
-        {
-            _isOverheated = true;
-        }
-
+        _overheatMetric +=_projectile.GetDegredationPerShot();
     }
 
     private float getProjectileSpawnOffset()
@@ -136,4 +156,6 @@ public class ThunderBolt : MonoBehaviour
         Vector2 v = new Vector2(transform.position.x + xPos, transform.position.y + +yPos);
         return v;
     }
+
+    
 }

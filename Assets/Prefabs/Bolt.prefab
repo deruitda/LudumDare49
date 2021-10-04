@@ -233,6 +233,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _projectileGameObject: {fileID: 7129150389623319983, guid: 5380a33e6a60c1943b16b3ef47b07e6d, type: 3}
+  _bombProjectileGameObject: {fileID: 0}
   _shotDelayInSeconds: 0.2
   _projectileSpawnOffset: 2
   _projectile: {fileID: 8909780503201477775, guid: 5380a33e6a60c1943b16b3ef47b07e6d, type: 3}
@@ -240,6 +241,9 @@ MonoBehaviour:
   _player: {fileID: 0}
   _cooldownPerSecond: 0.2
   _howOftenToCooldown: 0.01
+  _grenadeGameObject: {fileID: 5876174709622590217, guid: 89ef85721edea49419deac59a61ca577, type: 3}
+  _grenadeStartingYPosition: 1
+  _speedOfGrenadeToss: 3500
 --- !u!82 &3068849373543095061
 AudioSource:
   m_ObjectHideFlags: 0
