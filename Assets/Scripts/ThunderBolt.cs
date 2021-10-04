@@ -124,11 +124,9 @@ public class ThunderBolt : MonoBehaviour
             Quaternion.Euler(new Vector3(0, 0, 0))) as GameObject;
 
         projectileGameObject.GetComponent<Rigidbody>().AddForce(new Vector2(0, 1) * _speedOfGrenadeToss);
-            if (!_isOverheated) {
-                FireProjectile();
-                _nextShotTime = Time.time + _shotDelayInSeconds;
-            }
-        }
+        FireProjectile();
+        _nextShotTime = Time.time + _shotDelayInSeconds;
+        
 
         if(Input.GetMouseButton(1))
         {
