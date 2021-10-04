@@ -31,5 +31,11 @@ public class GrenadeProjectile : BaseProjectile
     {
         return GetComponent<GameObject>();
     }
+
+    protected new void OnTriggerEnter(Collider other)
+    {
+        base.OnTriggerEnter(other);
+        Despawn();
+    }
 }
 

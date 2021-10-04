@@ -37,7 +37,7 @@ namespace Assets.Scripts.Interfaces
             Debug.Log("Destroying bullet");
             Destroy(this.gameObject);
         }
-        private void OnTriggerEnter(Collider other)
+        protected void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.tag.Equals("Enemy"))
             {
