@@ -12,6 +12,9 @@ public class EnemyMortal : BaseMortal
     private AudioSource _deathAudio;
 
     [SerializeField]
+    private AudioSource _meleeAudio;
+
+    [SerializeField]
     private Rigidbody _rigidbody;
 
     [SerializeField]
@@ -50,6 +53,7 @@ public class EnemyMortal : BaseMortal
     {
         TakeDamage(damage);
         _rigidbody.AddForce(force);
+        _meleeAudio.Play();
 
         Invoke("ResetVelocity", .5f);
     }
