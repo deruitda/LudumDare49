@@ -15,6 +15,8 @@ public class EnemyAi : MonoBehaviour
     private EnemyMortal _enemyMortal;
     [SerializeField]
     private float _attackDelayInSeconds = 2f;
+    [SerializeField]
+    private float _attackOrbHeight = 2f;
 
 
     public NavMeshAgent Agent;
@@ -26,7 +28,7 @@ public class EnemyAi : MonoBehaviour
         if (!_enemyMortal.IsDead)
         {
             _playerInSightRange = Physics.CheckSphere(transform.position, SightRange, WhatIsPlayer);
-            _playerInAttackRange = Physics.CheckSphere(transform.position, AttackRange, WhatIsPlayer);
+            _playerInAttackRange = Physics.CheckSphere(new Vector3(transform.position.x, transform.position.y + _attackOrbHeight, transform.position.z), AttackRange, WhatIsPlayer);
 
             if (_playerInSightRange)
             {
@@ -49,10 +51,10 @@ public class EnemyAi : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        //Gizmos.color = Color.red;
-        //Gizmos.DrawWireSphere(transform.position, AttackRange);
-        //Gizmos.color = Color.blue;
-        //Gizmos.DrawWireSphere(transform.position, SightRange);
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(new Vector3(transform.position.x, transform.position.y + _attackOrbHeight, transform.position.z), AttackRange);
+        Gizmos.color = Color.blue;
+        Gizmos.DrawWireSphere(transform.position, SightRange);
     }
 
     private void Awake()

@@ -25,6 +25,9 @@ public class ThunderBolt : MonoBehaviour
     private AudioSource _projectileAudio;
 
     [SerializeField]
+    private Transform _shoulder;
+
+    [SerializeField]
     private Transform _player;
 
     [SerializeField]
@@ -42,10 +45,18 @@ public class ThunderBolt : MonoBehaviour
     [SerializeField]
     private float _speedOfGrenadeToss = .1f;
 
+    [SerializeField]
+    private float _meleeDistance = 3f;
+
+    [SerializeField]
+    private float _meleeShoveForce = 1000f;
+
+
     private float _overheatMetric = 0f;
 
     private float _nextShotTime = 0.0f;
     float tempTime;
+    private Vector3 _meleeHeightOffset = new Vector3(0, 2, 0);
 
     // Update is called once per frame
     void FixedUpdate()
@@ -80,7 +91,7 @@ public class ThunderBolt : MonoBehaviour
     }
     private float getMouseAngle()
     {
-        return (PlayerAim.GetMouseAngle(_player) * Mathf.Rad2Deg) + 90;
+        return (PlayerAim.GetMouseAngle(_shoulder) * Mathf.Rad2Deg) + 90;
     }
 
 
@@ -113,6 +124,36 @@ public class ThunderBolt : MonoBehaviour
             Quaternion.Euler(new Vector3(0, 0, 0))) as GameObject;
 
         projectileGameObject.GetComponent<Rigidbody>().AddForce(new Vector2(0, 1) * _speedOfGrenadeToss);
+            if (!_isOverheated) {
+                FireProjectile();
+                _nextShotTime = Time.time + _shotDelayInSeconds;
+            }
+        }
+
+        if(Input.GetMouseButton(1))
+        {
+            PerformMelee();
+        }
+    }
+
+    private void PerformMelee()
+    {
+        var right = new Vector3(_meleeDistance, _meleeHeightOffset.y, 0);
+        Debug.DrawLine(_player.position + _meleeHeightOffset, _player.position + right, Color.red);
+
+        if(Physics.Raycast(_player.position + _meleeHeightOffset, Vector2.right, out var hit, _meleeDistance))
+        {
+            Debug.Log("Enemy hit");          
+            var enemy = hit.collider.gameObject;
+
+            if(enemy.tag.Equals("Enemy"))
+            {
+                var mortal = enemy.GetComponent<EnemyMortal>();
+                mortal.ReceiveMelee(5, right * _meleeShoveForce);
+            }
+        }
+
+        
     }
 
     private void CreateProjectile()
@@ -146,7 +187,7 @@ public class ThunderBolt : MonoBehaviour
 
     private Vector2 GetProjectilePosition()
     {
-        float angle = PlayerAim.GetMouseAngle(_player);
+        float angle = PlayerAim.GetMouseAngle(_shoulder);
 
 
         float projectileSpawnOffset = getProjectileSpawnOffset();

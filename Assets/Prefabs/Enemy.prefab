@@ -52,7 +52,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 0.5
-  m_Speed: 3.5
+  m_Speed: 10.02
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
@@ -78,12 +78,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemyMortal: {fileID: 740391826}
   _attackDelayInSeconds: 2
+  _attackOrbHeight: 1.8
   Agent: {fileID: 2757679800969378997}
   WhatIsPlayer:
     serializedVersion: 2
     m_Bits: 8
-  SightRange: 50
-  AttackRange: 1
+  SightRange: 100.05
+  AttackRange: 1.91
 --- !u!136 &5627043773691282354
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -149,6 +150,7 @@ MonoBehaviour:
   _rigidbody: {fileID: 740391825}
   _collider: {fileID: 5627043773691282354}
   _enemyAi: {fileID: 2757679800969378986}
+  Spawner: {fileID: 0}
 --- !u!82 &6792723298967456495
 AudioSource:
   m_ObjectHideFlags: 0
@@ -455,7 +457,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 84133244601060836, guid: 447614fbc1451f44d9561f3ea5ab0ba9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.735
       objectReference: {fileID: 0}
     - target: {fileID: 84133244601060836, guid: 447614fbc1451f44d9561f3ea5ab0ba9, type: 3}
       propertyPath: m_LocalPosition.z
