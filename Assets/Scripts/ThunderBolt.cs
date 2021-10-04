@@ -104,13 +104,7 @@ public class ThunderBolt : MonoBehaviour
             _nextShotTime = Time.time + _shotDelayInSeconds;
         }
 
-        // fire projectile
-        if (Input.GetMouseButton(1))
-        {
-            PerformMelee();
-        }
-
-        if (Input.GetKey(KeyCode.LeftShift) && _overheatMetric >= 1f)
+        if(Input.GetKey(KeyCode.LeftShift) && _overheatMetric >= 1f)
         {
             //SetOffBomb
             ThrowBomb();
