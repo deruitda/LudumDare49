@@ -21,5 +21,15 @@ public class GrenadeProjectile : BaseProjectile
 
     public override float GetDamageAmount() => _damage;
     public override float GetDegredationPerShot() => _degredationPerShot;
+
+    public float GetRadius()
+    {
+        return GetComponent<SphereCollider>().radius;
+    }
+
+    public GameObject GetGameObject()
+    {
+        return GetComponent<GameObject>();
+    }
 }
 
