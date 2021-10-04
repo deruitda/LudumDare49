@@ -24,6 +24,9 @@ public class OverheatLighting : MonoBehaviour
     [SerializeField]
     private float _maxHaloSize = 5f;
 
+    [SerializeField]
+    private Light _light;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -62,11 +65,16 @@ public class OverheatLighting : MonoBehaviour
         float overheatMetric = _bolt.GetOverheatMetric();
         Color newColor = gradient.Evaluate(overheatMetric);
 
-        SerializedObject halo = new SerializedObject(GetComponent("Halo"));
         float size = GetMetricByIntensity(_minHaloSize, _maxHaloSize, overheatMetric);
 
-        halo.FindProperty("m_Size").floatValue = size;
-        halo.FindProperty("m_Color").colorValue = newColor;
-        halo.ApplyModifiedProperties();
+        _light.color = newColor;
+        _light.intensity = size;
+
+        //SerializedObject halo = new SerializedObject(GetComponent("Halo"));
+        //float size = GetMetricByIntensity(_minHaloSize, _maxHaloSize, overheatMetric);
+
+        //halo.FindProperty("m_Size").floatValue = size;
+        //halo.FindProperty("m_Color").colorValue = newColor;
+        //halo.ApplyModifiedProperties();
     }
 }

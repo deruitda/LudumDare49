@@ -11522,6 +11522,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 3667266970517767967, guid: f94236e320873044d91a6b5231b5881b, type: 3}
   m_PrefabInstance: {fileID: 1855094106}
   m_PrefabAsset: {fileID: 0}
+--- !u!108 &1443857625 stripped
+Light:
+  m_CorrespondingSourceObject: {fileID: 865078990811133149, guid: 0d174d304efc57f4dafeac17629d897f, type: 3}
+  m_PrefabInstance: {fileID: 5750722070175816795}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1455530322 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9071641339515535427, guid: 9d4cd6a3aefd72647a59b2713d119f5b, type: 3}
@@ -16769,6 +16774,18 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 865078990811133149, guid: 0d174d304efc57f4dafeac17629d897f, type: 3}
+      propertyPath: m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 865078990811133149, guid: 0d174d304efc57f4dafeac17629d897f, type: 3}
+      propertyPath: m_DrawHalo
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 865078990811133149, guid: 0d174d304efc57f4dafeac17629d897f, type: 3}
+      propertyPath: m_Intensity
+      value: 19.18
+      objectReference: {fileID: 0}
     - target: {fileID: 1436879562788320668, guid: 0d174d304efc57f4dafeac17629d897f, type: 3}
       propertyPath: m_PlayOnAwake
       value: 0
@@ -16781,6 +16798,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HorsePlayer
       objectReference: {fileID: 0}
+    - target: {fileID: 3523936407769171239, guid: 0d174d304efc57f4dafeac17629d897f, type: 3}
+      propertyPath: _light
+      value: 
+      objectReference: {fileID: 1443857625}
     - target: {fileID: 3644826045906954026, guid: 0d174d304efc57f4dafeac17629d897f, type: 3}
       propertyPath: _projectileAudio
       value: 
@@ -16797,6 +16818,10 @@ PrefabInstance:
       propertyPath: _projectileAudio
       value: 
       objectReference: {fileID: 275239962}
+    - target: {fileID: 7059224631678157079, guid: 0d174d304efc57f4dafeac17629d897f, type: 3}
+      propertyPath: m_Name
+      value: Light
+      objectReference: {fileID: 0}
     - target: {fileID: 7617141367169648507, guid: 0d174d304efc57f4dafeac17629d897f, type: 3}
       propertyPath: m_RotationAtRest.y
       value: 0

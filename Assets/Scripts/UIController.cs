@@ -35,7 +35,7 @@ public class UIController : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) || Input.GetKeyDown(KeyCode.Return) || Input.GetMouseButtonDown(0))
         {
             Destroy(_tutorialText);
             var color = _blackScreen.GetComponent<Image>().color;
