@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -43,5 +44,19 @@ public class EnemyMortal : BaseMortal
     private void DieDelayed()
     {
         base.Die();
+    }
+
+    public void ReceiveMelee(float damage, Vector2 force)
+    {
+        TakeDamage(damage);
+        _rigidbody.AddForce(force);
+
+        Invoke("ResetVelocity", .5f);
+    }
+
+    private void ResetVelocity()
+    {
+        _rigidbody.velocity = Vector3.zero;
+        _rigidbody.angularVelocity = Vector3.zero;
     }
 }

@@ -9,6 +9,9 @@ public class BoltProjectile : BaseProjectile
     private float _despawnTimeSeconds = 2f;
 
     [SerializeField]
+    private float _damage = 20;
+
+    [SerializeField]
     private float _speed = 1f;
 
     [SerializeField]
@@ -23,7 +26,7 @@ public class BoltProjectile : BaseProjectile
         if(other.gameObject.tag.Equals("Enemy"))
         {
             var enemyMortal = other.gameObject.GetComponent<EnemyMortal>();
-            enemyMortal.TakeDamage(50);
+            enemyMortal.TakeDamage(_damage);
             Despawn();
         }
     }
