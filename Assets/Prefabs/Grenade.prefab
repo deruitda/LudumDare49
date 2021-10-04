@@ -109,7 +109,7 @@ GameObject:
   - component: {fileID: 1916666784230236428}
   m_Layer: 0
   m_Name: Grenade
-  m_TagString: Untagged
+  m_TagString: IgnoreParticleCollision
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,5 +172,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _grenadeProjectile: {fileID: -2354575649837177586, guid: c8cdf6bbefd12da49aafc745e9ccac0c, type: 3}
   _projectileSpawnOffset: 0.43
-  _numberOfProjectiles: 102
+  _numberOfProjectiles: 345
   _grenadeProjectileGameObject: {fileID: 5547171888420044996, guid: c8cdf6bbefd12da49aafc745e9ccac0c, type: 3}

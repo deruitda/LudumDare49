@@ -46,6 +46,9 @@ namespace Assets.Scripts.Interfaces
                 enemyMortal.TakeDamage(damageAmount);
                 Despawn();
             }
+            if(other.gameObject.tag.Equals("IgnoreParticleCollision") != true) {
+                Despawn();
+            }
         }
     }
 }
