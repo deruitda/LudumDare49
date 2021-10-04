@@ -17,6 +17,8 @@ public class UIController : MonoBehaviour
     private Button _restartButton;
     [SerializeField]
     private float _fadeSpeed = 5;
+    [SerializeField]
+    private Text _tutorialText;
 
     private Vector3 _buttonScale;
     private Vector3 _textScale;
@@ -29,6 +31,16 @@ public class UIController : MonoBehaviour
 
         _textScale = _restartText.transform.localScale;
         _restartText.transform.localScale = new Vector3(0, 0, 0);
+    }
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Destroy(_tutorialText);
+            var color = _blackScreen.GetComponent<Image>().color;
+            _blackScreen.GetComponent<Image>().color = new Color(color.r, color.g, color.b, 0);
+        }
     }
 
     public void FadeToBlackGameOver()
