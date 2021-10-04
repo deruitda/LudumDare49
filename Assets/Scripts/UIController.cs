@@ -17,6 +17,8 @@ public class UIController : MonoBehaviour
     private Button _restartButton;
     [SerializeField]
     private float _fadeSpeed = 5;
+    [SerializeField]
+    private Text _tutorialText;
 
     private Vector3 _buttonScale;
     private Vector3 _textScale;
